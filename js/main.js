@@ -1,9 +1,5 @@
 var cadastrar = document.querySelector("#cadastrar");
 
-// cadastrar.addEventListener("keydown", function(event) {
-//    event.preventDefault();
-// })
-
 cadastrar.addEventListener("click", function(event) {
    event.preventDefault();
 
@@ -35,9 +31,8 @@ cadastrar.addEventListener("click", function(event) {
 
 
 
-   let validaPlaca = new RegExp("^[a-zA-Z]{3}[0-9]{4}$");
-   if (validaPlaca.test(placa) === false){ 
-      
+   let validaPlacaDefault = new RegExp("^[a-zA-Z]{3}[0-9]{1}[a-zA-Z]{1}[0-9]{2}|[a-zA-Z]{3}[0-9]{4}$");
+   if (validaPlacaDefault.test(placa) === false){ 
       placaClass = form.placa;
       placaClass.classList.add("invalida")
       placaClass.value = "Placa Inválida"
@@ -68,8 +63,6 @@ cadastrar.addEventListener("click", function(event) {
 
    }
    
-   
-
    var veiculoTr = document.createElement("tr");
 
    var modeloTd = document.createElement("td");
@@ -78,10 +71,13 @@ cadastrar.addEventListener("click", function(event) {
    var editarTd = document.createElement("td");
    var excluirTd = document.createElement("td");
 
-   var editarBtn = '<button id="edit-button" class="btn"><img id="table-btn" src="images/edit_white.png"></button>'
+   var editarBtn = '<button id="edit-button" onclick="editEvent()" class="btn" ><img id="table-btn" src="images/edit_white.png"></button>'
+
    var excluirBtn = '<button onclick="check(\''+ placa +'\',\''+ hora +'\',\''+ minutos +'\')" id="clear-button" class="btn btn-danger"><img id="table-btn" src="images/clear_white.png"></button>'
 
    veiculoTr.setAttribute('class', 'veiculoTr');
+
+   modeloTd.setAttribute('class', 'modeloBody');
    placaTd.setAttribute('class', 'placaBody');
 
    modeloTd.textContent = modelo;
@@ -93,15 +89,14 @@ cadastrar.addEventListener("click", function(event) {
    veiculoTr.appendChild(modeloTd);
    veiculoTr.appendChild(placaTd);
    veiculoTr.appendChild(horaTd);
-   veiculoTr.appendChild(editarTd)
-   veiculoTr.appendChild(excluirTd)
+   veiculoTr.appendChild(editarTd);
+   veiculoTr.appendChild(excluirTd);
 
-   
+   veiculoItemRow = veiculoTr.firstChild;
+
    var tableGaragem = document.querySelector("#garagem");
 
    tableGaragem.appendChild(veiculoTr);
 
    form.reset();
-
-});
-
+   })

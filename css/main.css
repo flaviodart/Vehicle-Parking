@@ -13,20 +13,6 @@
     width: fit-content;
 }
 
-
-/* Trocar pra Switch  (!!!) */
-#dark-input {
-    display: flexbox;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-    padding-top: 0.6em;
-    padding-bottom:0.3em ;
-    color: white;
-    background-color: #012e5a;
-    border: 2px solid #012e5a;
-    border-radius: 10%;
-}
-
 #container-main{
     padding-top: 40px;
     background: rgb(255,3,3);
@@ -91,6 +77,13 @@ td {
 #search-input{
     width: 400px;
 }
+#edit-tips {
+    position: absolute;
+    color: rgb(202, 201, 201);
+    font-style: italic;
+    font-size: large;
+    right: 3%;
+}
 
 
 /* Botão e ícone de tempo */
@@ -118,13 +111,22 @@ td {
 }
 
 .invalida{
-    animation: placaInput 1.5s linear;
+    animation: placaInputFalse 1.5s linear;
+}
+
+
+
+#edit-top span {
+    color: white;
 }
 
 /* Responsividade */
 @media screen and (max-width: 816px){
     #car-illustration{
         display: none
+    }
+    #edit-tips {
+        display: none;
     }
 }
 
@@ -138,9 +140,15 @@ td {
     main{
         background-color: #002447;
     }
+
+    #edit-tips {
+        display: none;
+    }
 }
 
-@keyframes placaInput {
+
+/* Keyframes */
+@keyframes placaInputFalse {
     0.0%{
         background: white;
         opacity: 1;
@@ -160,3 +168,4 @@ td {
         border: 2px solid white;
     }
 }
+
